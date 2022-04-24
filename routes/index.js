@@ -14,7 +14,7 @@ createRequire */
 
 router.use('/users', users);
 router.use('/vehicles', vehicles);
-router.use('/food', food);
+router.use('/foods', food);
 
 
 module.exports = router

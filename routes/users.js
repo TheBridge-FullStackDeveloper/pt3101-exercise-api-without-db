@@ -7,17 +7,17 @@ router.get('/vehicles', (req, res) => {
     const max = req.query.max;
     const users = data.filter(user =>
         min <= user.vehicles.length && user.vehicles.length <= max);
-/*
-    const result = users.map( user =>  
+
+    const result = users.map(user => ({
         username: user.username,
         email: user.email,
         image: user.img
-    )*/
+    })
+    );
+
     res.status(200).json({
         success: true,
-        data: {
-            result
-        }
+        data: result
     });
 });
 
@@ -34,53 +34,27 @@ router.get('/total', (req, res) => {
 });
 
 
-/*
 
-router.get('/:country', (req, res, next) => {
-    console.info('enters in :country')
-    const country = req.params.country;
-    
-
-    const user = data.filter( user => 
-        user.address.country
-        .toLowerCase()
-        .includes(country.toLowerCase()));
-
-    if (!user.length) next()
-    res.status(200).json({
-        success: true,
-        data: {
-            user
-        }
-    });
-});
-
-*/
-
-
-
-router.get('/:username', (req, res) => {
+router.get('/:username', (req, res) => {       //así se podría buscar por país o comida sin username?
     console.info('enters in :username')
     const country = req.query.country;
     const food = req.query.food;
     const username = req.params.username;
-    
-    let user = data.filter( user => 
-        user.username
-        .toLowerCase()
-        .includes(username.toLowerCase())
-    );
+    let user
+    if (username) {
+        user = data.filter(user =>
+            user.username === username
+        );
+    }
 
     if (country) {
-        user = user.filter( user =>
-            user.address.country
-            .toLowerCase()
-            .includes(country.toLowerCase())
+        user = user.filter(user =>
+            user.address.country === country
         );
     };
 
     if (food) {
-        user = user.filter( user =>
+        user = user.filter(user =>
             user.favouritesFood.includes(food)
         );
     };
