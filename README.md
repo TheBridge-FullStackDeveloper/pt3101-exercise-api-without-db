@@ -10,10 +10,10 @@
 
 ### Endpoints!
 
-1. Crea el endpoint `/users` (`GET`) que devuelva todos los usuarios
-2. Crea el endpoint `/users/:username` (`GET`) que devuelva un único usuario en base al `username` (si hubiera varios, devuelve solo el primero)
-3. Crea el endpoint `/users/total` (`GET`) para devolver el total de usuarios
-4. Crea el endpoint `/users/:country` (`GET`) para devolver todos los usuarios de un país en concreto recibido por `params`
+1. Crea el endpoint `/users` (`GET`) que devuelva todos los usuarios ✅
+2. Crea el endpoint `/users/:username` (`GET`) que devuelva un único usuario en base al `username` (si hubiera varios, devuelve solo el primero) ✅
+3. Crea el endpoint `/users/total` (`GET`) para devolver el total de usuarios ✅
+4. Crea el endpoint `/users/:country` (`GET`) para devolver todos los usuarios de un país en concreto recibido por `params` ✅
 5. Crea el endpoint `/users/vehicles` (`GET`) para obtener email, username e imagen de los usuarioss que tengan un mínimo y un máximo de vehículos (req.query `min` y `max`)
 6. Crea el endpoint `/users/:food` (`GET`) para devolver todos los usuarios con una comida favorita en concreto a través de params
 7. Crea el endpoint `/foods` (`GET`) para devolver una lista de todas las comidas registradas UNICAS de todos los usuarios
