@@ -8,7 +8,7 @@ const routes = require('./routes');
 app.use('/', routes);
 
 app.use((req, res, next) => {
-  next (new Error ('Path not found'));
+  next (new Error (error));
 });
 
 

@@ -2,19 +2,19 @@ const router = require("express").Router();
 const data = require('../db/users.json');
 
 router.get('/', (req, res) => {
-    const repeatedFoods = []
+    const allFoods = [];
 
     data.map(user =>
         user.favouritesFood.map(food =>
-            repeatedFoods.push(food))
-    )
+            allFoods.push(food))
+    );
 
-    const foods = new Set(repeatedFoods)
+    const foods = new Set(allFoods);
 
     res.status(200).json({
         success: true,
-        data: [...foods]
-    })
-})
+        [`Favourite foods:`]: [...foods]
+    });
+});
 
 module.exports = router;
