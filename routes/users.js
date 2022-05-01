@@ -1,5 +1,55 @@
 const router = require("express").Router();
 const data = require('../db/users.json');
+const { appendFile, writeFile } = require('fs');
+
+const { v4: uuidv4 } = require('uuid');
+const key = uuidv4(); //creates new key every time
+
+router.post('/create', (req, res) => {
+    const newUser = req.body;
+    newUser['id'] = uuidv4();
+    console.log(newUser)
+    if (newUser.hasOwnProperty('username') &&
+        newUser.hasOwnProperty('firstName') &&
+        newUser.hasOwnProperty('lastName') &&
+        newUser.hasOwnProperty('email')) {
+        const updatedDB = [...data, newUser];
+        writeFile('./db/users.json', JSON.stringify(updatedDB), err => {
+            if (err) {
+                console.error('writeFile err: ', err)
+            } else {
+                console.info(newUser)
+            }
+        })
+
+    }
+
+    res.status(200).json({
+        success: true,
+        [`Added user`]: newUser
+    });
+})
+
+router.put('/update/:username', (req, res) => {
+    const username = req.params.username;
+    const updatedProperties = req.body;
+
+    const user = data.filter(user => user.username === username);
+
+    for (let i = 0; i < updatedProperties.length; i++) {
+        user[updatedProperties.keys()[i]] = updatedProperties[updatedProperties.keys()[i]]
+    }
+
+    /*
+    writeFile('./db/users.json', JSON.stringify(updatedDB), err => {
+        if (err) {
+            console.error('writeFile err: ', err)
+        } else {
+            console.info(newUser)
+        }
+    })
+    */
+})
 
 
 router.get('/quantity/vehicles', (req, res) => {

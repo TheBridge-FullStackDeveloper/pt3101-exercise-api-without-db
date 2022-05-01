@@ -482,7 +482,10 @@
         "type": "Wagon"
       }
     ],
-    "favouritesFood": ["Dolma", "Pizza fugazeta"],
+    "favouritesFood": [
+      "Dolma",
+      "Pizza fugazeta"
+    ],
     "deleted": false
   },
   {
@@ -516,7 +519,12 @@
         "type": "Hatchback"
       }
     ],
-    "favouritesFood": ["Gelato", "Llapingacho", "Choucroute", "Encebollado"],
+    "favouritesFood": [
+      "Gelato",
+      "Llapingacho",
+      "Choucroute",
+      "Encebollado"
+    ],
     "deleted": false
   },
   {
@@ -564,7 +572,10 @@
         "type": "Extended Cab Pickup"
       }
     ],
-    "favouritesFood": ["Tandoori chicken", "Iahnie de fasole"],
+    "favouritesFood": [
+      "Tandoori chicken",
+      "Iahnie de fasole"
+    ],
     "deleted": false
   },
   {
@@ -633,7 +644,10 @@
         "type": "SUV"
       }
     ],
-    "favouritesFood": ["Llapingacho", "Gemista"],
+    "favouritesFood": [
+      "Llapingacho",
+      "Gemista"
+    ],
     "deleted": false
   },
   {
@@ -762,7 +776,9 @@
         "type": "Hatchback"
       }
     ],
-    "favouritesFood": ["Pastel de choclo"],
+    "favouritesFood": [
+      "Pastel de choclo"
+    ],
     "deleted": false
   },
   {
@@ -789,7 +805,9 @@
         "type": "Coupe"
       }
     ],
-    "favouritesFood": ["Sushi"],
+    "favouritesFood": [
+      "Sushi"
+    ],
     "deleted": false
   },
   {
@@ -830,7 +848,9 @@
         "type": "Passenger Van"
       }
     ],
-    "favouritesFood": ["Beef roghan josh"],
+    "favouritesFood": [
+      "Beef roghan josh"
+    ],
     "deleted": false
   },
   {
@@ -871,7 +891,12 @@
         "type": "Hatchback"
       }
     ],
-    "favouritesFood": ["Raita", "Croissant", "Soupe à l’oignon", "Bougatsa"],
+    "favouritesFood": [
+      "Raita",
+      "Croissant",
+      "Soupe à l’oignon",
+      "Bougatsa"
+    ],
     "deleted": false
   },
   {
@@ -1146,7 +1171,10 @@
         "type": "Minivan"
       }
     ],
-    "favouritesFood": ["Simit", "Ciorbă rădăuțeană"],
+    "favouritesFood": [
+      "Simit",
+      "Ciorbă rădăuțeană"
+    ],
     "deleted": false
   },
   {
@@ -1339,7 +1367,9 @@
         "type": "Passenger Van"
       }
     ],
-    "favouritesFood": ["Cachapa"],
+    "favouritesFood": [
+      "Cachapa"
+    ],
     "deleted": false
   },
   {
@@ -1366,7 +1396,12 @@
         "type": "Crew Cab Pickup"
       }
     ],
-    "favouritesFood": ["Hallaca", "Ramen", "Tonkatsu", "Tacos al pastor"],
+    "favouritesFood": [
+      "Hallaca",
+      "Ramen",
+      "Tonkatsu",
+      "Tacos al pastor"
+    ],
     "deleted": false
   },
   {
@@ -1419,7 +1454,11 @@
         "type": "Wagon"
       }
     ],
-    "favouritesFood": ["Fritto misto piemontes", "Aji de gallina", "Discada"],
+    "favouritesFood": [
+      "Fritto misto piemontes",
+      "Aji de gallina",
+      "Discada"
+    ],
     "deleted": false
   },
   {
@@ -1438,7 +1477,11 @@
       "country": "Wallis and Futuna"
     },
     "vehicles": [],
-    "favouritesFood": ["Chicken pad Thai", "Islak burgers", "Aji de gallina"],
+    "favouritesFood": [
+      "Chicken pad Thai",
+      "Islak burgers",
+      "Aji de gallina"
+    ],
     "deleted": false
   },
   {
@@ -1582,7 +1625,10 @@
         "type": "Hatchback"
       }
     ],
-    "favouritesFood": ["Fasolada", "Chicken madras"],
+    "favouritesFood": [
+      "Fasolada",
+      "Chicken madras"
+    ],
     "deleted": false
   },
   {
@@ -1601,7 +1647,9 @@
       "country": "Senegal"
     },
     "vehicles": [],
-    "favouritesFood": ["Hot pot"],
+    "favouritesFood": [
+      "Hot pot"
+    ],
     "deleted": false
   },
   {
@@ -1696,7 +1744,11 @@
         "type": "Cargo Van"
       }
     ],
-    "favouritesFood": ["Gigantes", "Zacuscă de vinete", "Aji de gallina"],
+    "favouritesFood": [
+      "Gigantes",
+      "Zacuscă de vinete",
+      "Aji de gallina"
+    ],
     "deleted": false
   },
   {
@@ -1793,7 +1845,10 @@
         "type": "Minivan"
       }
     ],
-    "favouritesFood": ["Gigantes", "Galaktoboureko"],
+    "favouritesFood": [
+      "Gigantes",
+      "Galaktoboureko"
+    ],
     "deleted": false
   },
   {
@@ -1966,7 +2021,10 @@
         "type": "Passenger Van"
       }
     ],
-    "favouritesFood": ["Steamed rice", "Kofta"],
+    "favouritesFood": [
+      "Steamed rice",
+      "Kofta"
+    ],
     "deleted": false
   },
   {
@@ -1993,7 +2051,10 @@
         "type": "Minivan"
       }
     ],
-    "favouritesFood": ["Tom kha gai", "Cochinita pibil"],
+    "favouritesFood": [
+      "Tom kha gai",
+      "Cochinita pibil"
+    ],
     "deleted": false
   },
   {
@@ -2069,7 +2130,12 @@
         "type": "Coupe"
       }
     ],
-    "favouritesFood": ["Kashipan", "Choripan", "Ribollita", "Pasticho"],
+    "favouritesFood": [
+      "Kashipan",
+      "Choripan",
+      "Ribollita",
+      "Pasticho"
+    ],
     "deleted": false
   },
   {
@@ -2198,7 +2264,9 @@
         "type": "Extended Cab Pickup"
       }
     ],
-    "favouritesFood": ["Arroz con pollo"],
+    "favouritesFood": [
+      "Arroz con pollo"
+    ],
     "deleted": false
   },
   {
@@ -2430,7 +2498,10 @@
         "type": "Wagon"
       }
     ],
-    "favouritesFood": ["Pulpo a feira", "Tortilla de patatas"],
+    "favouritesFood": [
+      "Pulpo a feira",
+      "Tortilla de patatas"
+    ],
     "deleted": false
   },
   {
@@ -2513,7 +2584,11 @@
         "type": "Cargo Van"
       }
     ],
-    "favouritesFood": ["Frico", "Lamb hot pot", "Lokum"],
+    "favouritesFood": [
+      "Frico",
+      "Lamb hot pot",
+      "Lokum"
+    ],
     "deleted": false
   },
   {
@@ -2764,5 +2839,13 @@
       "Baklava"
     ],
     "deleted": false
+  },
+  {
+    "email": "tan.nat",
+    "firstName": "NAT",
+    "lastName": "NAT",
+    "username": "nanat",
+    "deleted": false,
+    "id": "eeae458e-3fae-44bd-865d-38f28d680929"
   }
 ]
