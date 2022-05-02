@@ -3,7 +3,7 @@ const data = require('../db/users.json');
 const { appendFile, writeFile } = require('fs');
 
 const { v4: uuidv4 } = require('uuid');
-const key = uuidv4(); //creates new key every time
+//uuidv4(); creates new key every time
 
 router.post('/create', (req, res) => {
     const newUser = req.body;
@@ -30,16 +30,55 @@ router.post('/create', (req, res) => {
     });
 })
 
-router.put('/update/:username', (req, res) => {
+router.put('/vehicles/:username', (req, res) => {    //the for doesn't work D:
+    const username = req.params.username;
+    const newCars = req.body;
+
+    if (newCars) {
+        const currUser = data.filter(user => user.username === username);
+        const restOfUsers = data.filter(user => user.username !== username);
+        const oldCars = currUser.vehicles;
+        
+        console.log(currUser["vehicles"])
+        console.log('antes de update: ', currUser.vehicles)
+        if (Array.isArray(newCars)) {
+            //currUser.vehicles = [...oldCars, ...newCars]
+        } else {
+            console.log('deberia entrar aqui')
+            //currUser.vehicles = [...oldCars, newCars]
+        }
+        
+        console.log('despues de update: ', currUser.vehicles)
+        //const updatedDB = [...restOfUsers, currUser];
+
+        //console.log('despues de update: ', updatedDB)
+/*
+        writeFile('./db/users.json', JSON.stringify(updatedDB), err => {
+            if (err) {
+                console.error('writeFile err: ', err)
+            } else {
+                console.info(newUser)
+            }
+        })
+    */
+        res.status(200).json({
+            success: true,
+            [`Vehiclesof ${username}`]: vehicles
+        });
+    }
+})
+
+
+router.put('/update/:username', (req, res) => {    //the for doesn't work D:
     const username = req.params.username;
     const updatedProperties = req.body;
-
-    const user = data.filter(user => user.username === username);
-
+    const user = data.filter(user => user.username === username)[0];
+    console.log('user: ', user, 'newproperties: ', updatedProperties);
     for (let i = 0; i < updatedProperties.length; i++) {
+        console.log('value of user property: ' ,user[updatedProperties.keys()[i]], 'new properties: ' ,updatedProperties[updatedProperties.keys()[i]])
         user[updatedProperties.keys()[i]] = updatedProperties[updatedProperties.keys()[i]]
-    }
-
+    };
+    console.log(user)
     /*
     writeFile('./db/users.json', JSON.stringify(updatedDB), err => {
         if (err) {
@@ -49,6 +88,12 @@ router.put('/update/:username', (req, res) => {
         }
     })
     */
+   const updatedUser = data.filter(user => user.username === username)
+
+    res.status(200).json({
+        success: true,
+        [`Updated user`]: updatedUser
+    });
 })
 
 
