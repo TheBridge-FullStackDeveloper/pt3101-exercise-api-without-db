@@ -7,17 +7,26 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "create": "node scripts/create.js",
-    "db": "cat original/users_original.json > db/users.json"
+    "db": "cat original/users_original.json > db/users.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@ngneat/falso": "^4.0.0",
-    "express": "^4.17.3",
+    "express": "^4.18.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJmartinc/pt3101-exercise-api-without-db.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JJmartinc/pt3101-exercise-api-without-db/issues"
+  },
+  "homepage": "https://github.com/JJmartinc/pt3101-exercise-api-without-db#readme"
 }
