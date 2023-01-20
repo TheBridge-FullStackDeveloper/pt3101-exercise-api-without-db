@@ -10,7 +10,7 @@ const getUsers =  (req, res)=> {
 }
 
 const getUser = (req, res)=> {
-    let username = req.params.username;
+    const username = req.params.username;
     let user = db.filter(user => user.username === username);
             
     try {
@@ -35,20 +35,70 @@ const getTotal = (req, res)=> {
 }
 
 const getCountry = (req,res)=>{
-    let country = req.params.country;
+    const country = req.params.country;
     console.log(country);
     let userCountry = db.filter(c => c.address.country.toLowerCase() == country.toLowerCase());
-    
     try {
         res.status(200).json({country: userCountry});
     } catch (error) {
         console.log(`ERROR: ${error.stack}`);
     }
 }
+const getVehicles = (req,res)=> {
+    const { min, max } = req.query;
+    let usersVehicles = db.filter(user => user.vehicles.length >= min && user.vehicles.length <= max);
+    let userV =[]
+    usersVehicles = usersVehicles.map(user => {
+        user ={
+            email: user.email,
+            username:user.username,
+            img:  user.img,
+        }
+        userV.push(user)
+        
+    })
+    
+    if (min && max) {
+        
+        try {
+            res.status(200).json({users: userV});
+        } catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
+    
+}
+}
+
+const getFoods = (req,res) =>{
+    if (req.params.food) {
+        const food = req.params.food;
+    
+        let userFood = db.filter(user => 
+            user.favouritesFood.map(food => food.toLowerCase()).includes(food.toLowerCase()));
+    
+        try {
+            res.status(200).json({food: userFood});
+        } catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
+    } else {
+        
+        let foods = []
+        db.map(user => 
+            user.favouritesFood.map(food => foods.push(food)));
+        const foodSet = [...new Set(foods)]
+        
+        res.status(200).json({foods: foodSet});
+    }
+    
+}
+
 
 module.exports = {
     getUsers,
     getUser,
     getTotal,
-    getCountry
+    getCountry,
+    getVehicles,
+    getFoods
 }
