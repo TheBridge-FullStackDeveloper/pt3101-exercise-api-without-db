@@ -1,22 +1,15 @@
 const express = require('express');
 const usersRouter = express.Router();
+const usersController = require('../controllers/usersController')
 
-usersRouter.get('/users', (req,res =>{
+usersRouter.get('/', usersController.getUsers);
 
-}));
+usersRouter.get('/:username?', usersController.getUser);
 
-usersRouter.get('/users/:username', (req,res =>{
+usersRouter.get('/users/total',usersController.getTotal);
 
-}));
-
-usersRouter.get('/users/total', (req,res =>{
-
-}));
-
-usersRouter.get('/users/:country', (req,res =>{
-
-}));
-
+usersRouter.get('/country/:country', usersController.getCountry);
+/*
 usersRouter.get('/users/:food', (req,res =>{
 
 }));
@@ -47,4 +40,6 @@ usersRouter.put('/users/:username/hide', (req,res =>{
 
 usersRouter.delete('/users/:username', (req,res =>{
 
-}));
+})); */
+
+module.exports = usersRouter;
