@@ -1,4 +1,5 @@
 const db = require('../db/users.json');
+const { v4: uuidv4 } = require('uuid');//For the creation of RFC4122 UUIDs
 
 const getUsers =  (req, res)=> {
     try {
@@ -174,11 +175,86 @@ const getUserVehicles = (req,res) => {
 }
 
 const createUser = (req,res) => {
-    const {email,firstname,lastname,username} = req.body;
+    let username = req.body.username;
+    let firstName =req.body.firstName;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    //no me funciona con destructuring
+    let newUser = {
+        "id": `${uuidv4()}`,
+        "email": `${email}`,
+        "firstName": `${firstName}`,
+        "lastName": `${lastName}`,
+        "phone": `${req.body.phone}`,
+        "img": `${req.body.img}`,
+        "username": `${username}`,
+        "address": {
+        "street": `${req.body.address.street}`,
+        "city": `${req.body.address.city}`,
+        "zipCode": `${req.body.address.zipCode}`,
+        "county": `${req.body.address.county}`,
+        "country": `${req.body.address.country}`
+        },
+        "vehicles": [
+        {
+        "fuel": `${req.body.vehicles[0].fuel}`,
+        "manufacturer": `${req.body.vehicles[0].manufacturer}`,
+        "model": `${req.body.vehicles[0].model}`,
+        "car": `${req.body.vehicles[0].car}`,
+        "type": `${req.body.vehicles[0].type}`
+        },
+        
+        ],
+        "favouritesFood": [
+            `${req.body.favouritesFood}`
+        ],
+        "deleted": false
+        }
+    /*  json prueba {
+        "id": "",
+        "email": "prueba@email.com",
+        "firstName": "prueba",
+        "lastName": "test",
+        "phone": "123456789",
+        "img": "https://i.pravatar.cc/101",
+        "username": "prueba_test",
+        "address": {
+        "street": "",
+        "city": "",
+        "zipCode": "",
+        "county": "",
+        "country": ""
+        },
+        "vehicles": [
+        {
+        "fuel": "",
+        "manufacturer": "",
+        "model": "",
+        "car": "",
+        "type":""
+        }
+        ],
+        "favouritesFood": [
+        ""
+        ],
+        "deleted": false
+        } */
+    
+        if (username&&firstName&&lastName&&email) {
+            
+            try {
+                res.status(201).json(newUser);
+            } catch (error) {
+                console.log(`ERROR: ${error.stack}`);
+            }
+        }else{
+            res.status(206).json({msj:`Faltan datos para crear el usuario. Debe contener email, firstName, lastName y username`});
+        }
+        
+        
+        
+        
 }
-
-
-
 
 
 
@@ -190,5 +266,6 @@ module.exports = {
     getCountry,
     getUVehicles,
     getFoods,
-    getUserVehicles
+    getUserVehicles,
+    createUser
 }

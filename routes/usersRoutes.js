@@ -30,11 +30,9 @@ usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);
 //http://localhost:3000/users/vehicles/vehicles?fuel=Electric&model=a4
 //http://localhost:3000/users/vehicles/vehicles?fuel=Electric&manufacturer=Caterham
 
+
+usersRouter.post('/users', usersController.createUser);
 /*
-usersRouter.post('/users', (req,res =>{
-
-}));
-
 usersRouter.put('/users/:username', (req,res =>{
 
 }));

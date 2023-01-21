@@ -8,7 +8,8 @@ const PORT = 3000;
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-
+app.use(express.urlencoded({extended:true}))
+app.use(express.json());
 app.use('/users',usersRouter)
 app.use(vehiclesRouter)
 
