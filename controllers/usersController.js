@@ -1,4 +1,4 @@
-const db = require('../db/users.json')
+const db = require('../db/users.json');
 
 const getUsers =  (req, res)=> {
     try {
@@ -44,7 +44,7 @@ const getCountry = (req,res)=>{
         console.log(`ERROR: ${error.stack}`);
     }
 }
-const getVehicles = (req,res)=> {
+const getUVehicles = (req,res)=> {
     const { min, max } = req.query;
     let usersVehicles = db.filter(user => user.vehicles.length >= min && user.vehicles.length <= max);
     let userV =[]
@@ -173,13 +173,22 @@ const getUserVehicles = (req,res) => {
     }
 }
 
+const createUser = (req,res) => {
+    const {email,firstname,lastname,username} = req.body;
+}
+
+
+
+
+
+
 
 module.exports = {
     getUsers,
     getUser,
     getTotal,
     getCountry,
-    getVehicles,
+    getUVehicles,
     getFoods,
     getUserVehicles
 }

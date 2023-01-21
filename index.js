@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const usersRouter = require('./routes/usersRoutes')
+const usersRouter = require('./routes/usersRoutes');
+const vehiclesRouter = require('./routes/vehiclesRoutes')
 
 const PORT = 3000;
 
@@ -9,6 +10,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/users',usersRouter)
+app.use(vehiclesRouter)
 
 app.listen(PORT, () => {
   console.info(`> Estoy arribísima en el puerto ${PORT}! ✨🦄`);
