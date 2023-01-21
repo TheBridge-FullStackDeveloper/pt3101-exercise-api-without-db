@@ -93,6 +93,70 @@ const getFoods = (req,res) =>{
     
 }
 
+const getUserVehicles = (req,res) => {
+    const { fuel, manufacturer, model } = req.query;
+    if (fuel && manufacturer && model) {
+        let userVehicles = [];
+        for (let i = 0; i < db.length; i++) {
+            db[i].vehicles.filter(vehicle =>  {
+                if (vehicle.fuel.toLowerCase() === fuel.toLowerCase() && vehicle.manufacturer.toLowerCase() === manufacturer.toLowerCase() && vehicle.model.toLowerCase() === model.toLowerCase()) {
+                    userVehicles.push(db[i])
+                }
+                })
+        }
+        /* let userVehicles = db.map(user => user.vehicles.filter(vehicle =>  vehicle.fuel.toLowerCase() === fuel.toLowerCase() && vehicle.manufacturer.toLowerCase() === manufacturer.toLowerCase() && vehicle.model.toLowerCase() === model.toLowerCase())); */
+        let userV = []
+        userVehicles = userVehicles.map(user => {
+            user ={
+                email: user.email,
+                username:user.username,
+                img:  user.img,
+            }
+            userV.push(user)
+            
+        }) 
+        try {
+            res.status(200).json({users: userV});
+        } catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
+
+    } else if(fuel && (manufacturer || model)){
+        let userVehicles = [];
+        for (let i = 0; i < db.length; i++) {
+            db[i].vehicles.filter(vehicle =>  {
+                if (fuel && manufacturer) {
+                    if (vehicle.fuel.toLowerCase() === fuel.toLowerCase() && vehicle.manufacturer.toLowerCase() === manufacturer.toLowerCase()) {
+                        userVehicles.push(db[i])
+                    }
+                    
+                }else if (fuel && model) {
+                    if (vehicle.fuel.toLowerCase() === fuel.toLowerCase() && vehicle.model.toLowerCase() === model.toLowerCase()) {
+                        userVehicles.push(db[i])
+                    }
+                }
+                })
+        }
+        let userV = []
+        userVehicles = userVehicles.map(user => {
+            user ={
+                email: user.email,
+                username:user.username,
+                img:  user.img,
+            }
+            userV.push(user)
+            
+        }) 
+        try {
+            res.status(200).json({users: userV});
+        } catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
+    } else{
+        //sin coche
+    }
+}
+
 
 module.exports = {
     getUsers,
@@ -100,5 +164,6 @@ module.exports = {
     getTotal,
     getCountry,
     getVehicles,
-    getFoods
+    getFoods,
+    getUserVehicles
 }
