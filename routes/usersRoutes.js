@@ -19,6 +19,9 @@ usersRouter.get('/food/:food?',usersController.getFoods);
 usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);
 //http://localhost:3000/users/vehicles/vehicles?fuel=diesel&manufacturer=Aston%20Martin&model=golf
 //http://localhost:3000/users/vehicles/vehicles?fuel=Electric&manufacturer=Caterham&model=A4
+//http://localhost:3000/users/vehicles/vehicles?fuel=Electric&model=a4
+//http://localhost:3000/users/vehicles/vehicles?fuel=Electric&manufacturer=Caterham
+
 /*
 usersRouter.post('/users', (req,res =>{
 

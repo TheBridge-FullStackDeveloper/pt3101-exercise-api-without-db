@@ -152,8 +152,24 @@ const getUserVehicles = (req,res) => {
         } catch (error) {
             console.log(`ERROR: ${error.stack}`);
         }
-    } else{
-        //sin coche
+    } else {
+        let usersVehicles = db.filter(user => user.vehicles.length === 0);
+        let userV =[]
+        usersVehicles = usersVehicles.map(user => {
+            user ={
+                email: user.email,
+                username:user.username,
+                img:  user.img,
+            }
+            userV.push(user)
+        
+    })
+
+        try {
+            res.status(200).json({users: userV});
+        } catch (error) {
+            console.log(`ERROR: ${error.stack}`);
+        }
     }
 }
 
