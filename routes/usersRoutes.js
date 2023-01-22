@@ -32,11 +32,10 @@ usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);
 
 
 usersRouter.post('/users', usersController.createUser);
+//http://localhost:3000/users/users
+
+usersRouter.put('/users/:username',usersController.updateUser);
 /*
-usersRouter.put('/users/:username', (req,res =>{
-
-}));
-
 usersRouter.put('/users/:username/vehicles', (req,res =>{
 
 }));

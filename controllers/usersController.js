@@ -1,5 +1,6 @@
 const db = require('../db/users.json');
 const { v4: uuidv4 } = require('uuid');//For the creation of RFC4122 UUIDs
+const fs = require('fs');
 
 const getUsers =  (req, res)=> {
     try {
@@ -165,7 +166,6 @@ const getUserVehicles = (req,res) => {
             userV.push(user)
         
     })
-
         try {
             res.status(200).json({users: userV});
         } catch (error) {
@@ -241,9 +241,47 @@ const createUser = (req,res) => {
         } */
     
         if (username&&firstName&&lastName&&email) {
-            
+            let newData = []
             try {
-                res.status(201).json(newUser);
+
+                fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+                    if (error) {
+                        res.status(500).json({
+                            success: false,
+                            message: error
+                        })
+                    } else {
+                // almaceno en mi variable newData lo que tenía en mi JSON
+                newData = JSON.parse(data)
+                // añado a mi array el nuevo producto
+                newData.push(newUser)
+
+                // Sobreescribo mi json con el array nuevo de productos (debo estar parseado a string)
+                fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+                    if (error) {
+                        res.status(500).json({
+                            success: false,
+                            message: error
+                        })
+                    } else {
+                        
+                        // si todo va bien, devuelvo una respuesta con un status code 200
+                        res.status(201).json({
+                            success: true, 
+                            data: newData, // CAMBIO LA DATA QUE ME DEVUELVE PARA QUE DEVUELVA TODOS LOS PRODUCTOS
+                            message: `Nuevo usuario ${req.body.username}, fue añadido con éxito`
+                        })
+
+
+                    }
+                })
+            }
+        })
+
+
+            
+
+               // res.status(201).json(newUser);
             } catch (error) {
                 console.log(`ERROR: ${error.stack}`);
             }
@@ -256,7 +294,9 @@ const createUser = (req,res) => {
         
 }
 
+const updateUser = (req,res)=> {
 
+}
 
 
 module.exports = {
@@ -267,5 +307,6 @@ module.exports = {
     getUVehicles,
     getFoods,
     getUserVehicles,
-    createUser
+    createUser,
+    updateUser
 }
