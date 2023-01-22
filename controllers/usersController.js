@@ -243,7 +243,7 @@ const createUser = (req,res) => {
         if (username&&firstName&&lastName&&email) {
             let newData = []
             try {
-
+                //leo el json --> Cuidado con las / delante de la ruta, da error
                 fs.readFile('db/users.json', 'utf-8',(error,data)=> {
                     if (error) {
                         res.status(500).json({
@@ -253,7 +253,7 @@ const createUser = (req,res) => {
                     } else {
                 // almaceno en mi variable newData lo que tenía en mi JSON
                 newData = JSON.parse(data)
-                // añado a mi array el nuevo producto
+                // añado a mi array el nuevo usuario
                 newData.push(newUser)
 
                 // Sobreescribo mi json con el array nuevo de productos (debo estar parseado a string)
@@ -277,26 +277,121 @@ const createUser = (req,res) => {
                 })
             }
         })
-
-
-            
-
-               // res.status(201).json(newUser);
             } catch (error) {
                 console.log(`ERROR: ${error.stack}`);
             }
         }else{
             res.status(206).json({msj:`Faltan datos para crear el usuario. Debe contener email, firstName, lastName y username`});
         }
-        
-        
-        
-        
 }
 
 const updateUser = (req,res)=> {
+    const username = req.params.username;
 
+    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+    
+    newData = JSON.parse(data);
+    
+    
+    newData.map(user => {
+        if (user.username === username) {
+            user.email = req.body.email
+            user.firstName = req.body.firstName
+            user.lastName = req.body.lastName
+            user.phone = req.body.phone
+            user.img = req.body.img
+            user.username = username
+            user.address = {
+            street : req.body.address.street,
+            city: req.body.address.city,
+            zipCode : req.body.address.zipCode,
+            county: req.body.address.county,
+            country: req.body.address.country
+            }  
+        }
+    })
+
+    
+    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+            
+            res.status(202).json({
+                success: true, 
+                data: newData, 
+                message: `Nuevo usuario ${username}, fue actualizado con éxito`
+            })
+
+
+        }
+    })
 }
+})
+}
+
+const updateVehicles = (req, res)=> {
+    const username = req.params.username;
+    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+    
+    newData = JSON.parse(data);
+    
+    if (!req.body.vehicles) {
+        
+    } else {
+        newData.map(user => {
+            if (user.username === username) {
+                
+                user.vehicles.push(req.body.vehicles) 
+            }
+        })
+    }
+    
+    
+/* JSON re.body
+    { "vehicles": 
+{
+    "fuel": "Diesel",
+    "manufacturer": "Lotus",
+    "model": "Jetta",
+    "car": "Lotus Jetta",
+    "type": "Hatchback"
+    }
+} */
+    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+            
+            res.status(202).json({
+                success: true, 
+                data: newData, 
+                message: `Vehiculos del usuario ${username}, fue actualizados con éxito`
+            })
+        }
+    })
+}
+})
+}
+
 
 
 module.exports = {
@@ -308,5 +403,6 @@ module.exports = {
     getFoods,
     getUserVehicles,
     createUser,
-    updateUser
+    updateUser,
+    updateVehicles
 }

@@ -34,12 +34,13 @@ usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);
 usersRouter.post('/users', usersController.createUser);
 //http://localhost:3000/users/users
 
-usersRouter.put('/users/:username',usersController.updateUser);
+usersRouter.put('/users/:username?',usersController.updateUser);
+//http://localhost:3000/users/users/prueba_test
+
+usersRouter.put('/users/:username/vehicles', usersController.updateVehicles);
+//http://localhost:3000/users/users/prueba_test/vehicles
+
 /*
-usersRouter.put('/users/:username/vehicles', (req,res =>{
-
-}));
-
 usersRouter.put('/users/:username/foods', (req,res =>{
 
 }));
