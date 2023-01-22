@@ -19,9 +19,7 @@ usersRouter.get('/country/:country', usersController.getCountry);
 usersRouter.get('/vehicles', usersController.getUVehicles);
 //http://localhost:3000/users/vehicles/vehicles?min=1&max=6
 
-usersRouter.get('/food/:food?',usersController.getFoods);
-//http://localhost:3000/users/food/ceviche
-//http://localhost:3000/users/food/natto
+
 
 
 usersRouter.get('/vehicles/vehicles', usersController.getUserVehicles);
