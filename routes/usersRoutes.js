@@ -46,9 +46,8 @@ usersRouter.put('/users/:username/foods', usersController.updateFoods);
 
 usersRouter.put('/users/:username/hide', usersController.updateStatus);
 //http://localhost:3000/users/users/prueba_test/hide
-/*
-usersRouter.delete('/users/:username', (req,res =>{
 
-})); */
+usersRouter.delete('/users/:username', usersController.deleteUser); 
+//http://localhost:3000/users/users/prueba_test
 
 module.exports = usersRouter;

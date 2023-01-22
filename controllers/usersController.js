@@ -490,9 +490,11 @@ const updateStatus = (req,res) => {
 }
 
 const deleteUser = (req, res) => {
-    const updateStatus = (req,res) => {
     
         const username = req.params.username;
+        const email = req.body.email;
+        console.log(email);
+
         fs.readFile('db/users.json', 'utf-8',(error,data)=> {
             if (error) {
                 res.status(500).json({
@@ -501,18 +503,17 @@ const deleteUser = (req, res) => {
                 })
             } else {
         
+        
         newData = JSON.parse(data);
+        
+        //newData.filter(user => user.email.toLowerCase() != email.toLowerCase()); --> No funciona
 
-        newData.map(user=>{
-            if (user.username === username) {
-                if (user.deleted = true) {
-                    
-                } else {
-                    
-                }
+        for (let [i, user] of newData.entries()) {
+            if (user.email === email) {
+                user.deleted === true ? newData.splice(i, 1) : res.status(500).json({success: false,message: error})
                 
             }
-        })
+        }
         
         
         fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
@@ -526,14 +527,14 @@ const deleteUser = (req, res) => {
                 res.status(202).json({
                     success: true, 
                     data: newData, 
-                    message: `Estado del usuario ${username}, fue actualizados con éxito`
+                    message: `Usuario ${username}, eliminado`
                 })
             }
         })
     }
     })
 }
-}
+
 
 module.exports = {
     getUsers,
@@ -547,5 +548,6 @@ module.exports = {
     updateUser,
     updateVehicles,
     updateFoods,
-    updateStatus
+    updateStatus,
+    deleteUser
 }
