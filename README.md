@@ -1,7 +1,7 @@
-###¿Qué es una API?
+<h1>¿Qué es una API?</h1>
 Una API (interfaz de programación de aplicaciones) es un conjunto de reglas y protocolos para acceder a una aplicación o sistema. Permite que diferentes aplicaciones se comuniquen entre sí y compartan datos.
 
-###¿Cómo se usa una API?
+<h1>¿Cómo se usa una API?</h1>
 Obtén una clave de API: Muchas APIs requieren que te registres para obtener una clave de API única. Esta clave se utilizará para autenticar tus solicitudes a la API.
 
 Revisa la documentación de la API: Antes de empezar a usar la API, es importante leer la documentación para entender cómo funciona y qué recursos están disponibles. La documentación también te proporcionará información sobre los formatos de solicitud y respuesta, así como los límites de uso.
@@ -12,7 +12,7 @@ Analiza la respuesta: La API devolverá una respuesta en un formato específico 
 
 Utiliza los datos: Una vez que tengas los datos de la API, puedes utilizarlos en tu aplicación de acuerdo a tus necesidades.
 
-###Ejemplo de uso de una API
+<h1>Ejemplo de uso de una API</h1>
 Vamos a usar como ejemplo la API local.
 Analiza la respuesta en formato JSON para obtener la información del objeto.
 Utiliza la información del objeto en tu aplicación, por ejemplo para mostrar la informacion de cualquiera de los detalles de los usuarios.
