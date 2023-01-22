@@ -244,97 +244,28 @@ app.use('/vehicle', userVehicle);
 
 
 
-// app.put('/users/1/:username', (req, res) => {
-//     const username = req.params;
-//     const userData = req.body;
+app.put('/users/:username', (req, res) => {
+    const username = req.params.username;
+    const updatedUser = req.body;
 
-//     // Eliminar el ID, los vehículos, los alimentos y el campo deleted del objeto userData
-//     delete userData.id;
-//     delete userData.vehicles;
-//     delete userData.foods;
-//     delete userData.deleted;
+    // Find the index of the user with the specified username
+    const userIndex = users.findIndex(user => user.username === username);
 
-//     // Simulando una busqueda en una "base de datos"
-//     let userToUpdate = users.find(user => user.username === username)
+    if (userIndex === -1) {
+        return res.status(404).json('User not found');
+    }
 
-//     // Si no se encuentra el usuario
-//     if (!userToUpdate) {
-//         return res.status(404).json({
-//             message: 'No se encontró el usuario especificado'
-//         });
-//     }
-//     //Actualizando la informacion del usuario
-//     Object.assign(userToUpdate, userData);
-//     return res.status(200).json({
-//         message: 'Usuario actualizado exitosamente',
-//         user: userToUpdate
-//     });
-// });
-
-// app.put("/users/:username/vehicles", (req, res) => {
-//     const { username } = req.params;
-//     const vehicles = req.body;
-//     if (!vehicles) {
-//         return res.status(400).send("No se ha especificado ningún vehículo para añadir.");
-//     }
-
-//     users.findOne({ username }, (err, user) => {
-//         if (err) return res.status(500).send(err);
-//         if (!user) return res.status(404).send("No se ha encontrado el usuario especificado");
-//         user.vehicles = vehicles;
-//         user.save((err, updatedUser) => {
-//             if (err) return res.status(500).send(err);
-//             return res.send(updatedUser);
-//         });
-//     });
-// });
+    delete updatedUser.id;
+    delete updatedUser.vehicles;
+    delete updatedUser.foods;
+    delete updatedUser.deleted;
+    users[userIndex] = { ...users[userIndex], ...updatedUser };
 
 
+    fs.writeFileSync('./db/users.json', JSON.stringify(users));
 
-// router.post('/users/create', (req, res) => {
-//     const { email, firstname, lastname, username } = req.body;
-
-//     if (!email || !firstname || !lastname || !username) {
-//         return res.status(400).json({ error: 'Missing required fields' });
-//     }
-
-//     const newUser = {
-//         id: uuid.v4(),
-//         email: email,
-//         firstname: firstname,
-//         lastname: lastname,
-//         username: username,
-//         createdAt: new Date()
-//     };
-
-//     // Save the new user to the database
-//     users.create(newUser)
-//         .then(user => res.json(user))
-//         .catch(err => res.status(500).json({ error: err.message }));
-// });
-// app.get('/users/create', (req, res) => {
-//     console.log("Esto es el console.log de lo que introducimos por postman", req.body); // Objeto recibido de producto nuevo
-//     const newProduct = req.body; // {} nuevo producto a guardar
-//     // Líneas
-//     // para guardar
-//     // en una BBDD SQL o MongoDB
-// })
-//     let response = await fetch('', {
-//         method: "POST",
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(newProduct)
-//     })
-//     let answer = await response.json(); // objeto de vuelta de la petición
-//     console.log("Este es el console.log de lo que devuelve la api", answer);
-//     res.status(201).json({
-//         msj: `Producto ${answer.title} guardado en el sistema con ID: ${answer.id}`,
-//         "product": answer
-//     });
-
-// module.exports = router;
+    res.json({ message: 'Usuario actualizado correctamente' });
+});
 
 //? 12 Crea el endpoint /users/:username/vehicles (PUT) para obtener una lista de vehículos en req.body
 //? (puede ser uno o muchos. Si no es ninguno, que no haga nada) y añádelos a los existentes del usuario específico (usuario a través de params)

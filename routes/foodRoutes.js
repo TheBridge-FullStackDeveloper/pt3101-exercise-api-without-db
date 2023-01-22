@@ -6,5 +6,8 @@ const usersRouter = express.Router();
 usersRouter.get('/', userFood.userFood);
 //? 6 
 usersRouter.get('/users/:food', userFood.userSameFood);
+//? 13
+usersRouter.put('users/put/params', userFood.putFoodUsers);
+
 
 module.exports = usersRouter;

@@ -12,7 +12,12 @@ usersRuter.get('/country/:country', userControllers.uniqueCountryUsers);
 usersRuter.get('/users/username/:username',  userControllers.onlyUser);
 //? 10
 usersRuter.post('/create', userControllers.createUser);
-
+//? 11
+usersRuter.put('/users/:username',userControllers.reqParmUser );
+//? 14
+usersRuter.put('/users/hide', userControllers.putHideUsers );
+//? 15
+usersRuter.put('/users/delet',userControllers.deleteUsers );
 
 
 
