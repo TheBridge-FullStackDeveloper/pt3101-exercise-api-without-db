@@ -392,7 +392,148 @@ const updateVehicles = (req, res)=> {
 })
 }
 
+const updateFoods = (req, res) => {
+    const username = req.params.username;
+    fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+    
+    newData = JSON.parse(data);
+    
+    if (!req.body.favouritesFood) {
+        newData.map(user => {
+            if (user.username === username) {
+                
+                user.favouritesFood = [];
+            }
+        })
+    } else {
+        newData.map(user => {
+            if (user.username === username) {
+                
+                user.favouritesFood.push(req.body.favouritesFood) 
+            }
+        })
+    }
+    
+    
+/* JSON req.body
 
+    {"favouritesFood": [
+"Bife de chorizo",
+"Pan de bono",
+"Beef fondue",
+"Chicha andina"
+]}
+} */
+    fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+        if (error) {
+            res.status(500).json({
+                success: false,
+                message: error
+            })
+        } else {
+            
+            res.status(202).json({
+                success: true, 
+                data: newData, 
+                message: `Comidas favoritas del usuario ${username}, fue actualizados con éxito`
+            })
+        }
+    })
+}
+})
+}
+
+const updateStatus = (req,res) => {
+    
+        const username = req.params.username;
+        fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: error
+                })
+            } else {
+        
+        newData = JSON.parse(data);
+
+        newData.map(user=>{
+            if (user.username === username) {
+
+                user.deleted = true;
+            }
+        })
+        
+        
+        fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: error
+                })
+            } else {
+                
+                res.status(202).json({
+                    success: true, 
+                    data: newData, 
+                    message: `Estado del usuario ${username}, fue actualizados con éxito`
+                })
+            }
+        })
+    }
+    })
+}
+
+const deleteUser = (req, res) => {
+    const updateStatus = (req,res) => {
+    
+        const username = req.params.username;
+        fs.readFile('db/users.json', 'utf-8',(error,data)=> {
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: error
+                })
+            } else {
+        
+        newData = JSON.parse(data);
+
+        newData.map(user=>{
+            if (user.username === username) {
+                if (user.deleted = true) {
+                    
+                } else {
+                    
+                }
+                
+            }
+        })
+        
+        
+        fs.writeFile('db/users.json', JSON.stringify(newData), (error, data) => {
+            if (error) {
+                res.status(500).json({
+                    success: false,
+                    message: error
+                })
+            } else {
+                
+                res.status(202).json({
+                    success: true, 
+                    data: newData, 
+                    message: `Estado del usuario ${username}, fue actualizados con éxito`
+                })
+            }
+        })
+    }
+    })
+}
+}
 
 module.exports = {
     getUsers,
@@ -404,5 +545,7 @@ module.exports = {
     getUserVehicles,
     createUser,
     updateUser,
-    updateVehicles
+    updateVehicles,
+    updateFoods,
+    updateStatus
 }

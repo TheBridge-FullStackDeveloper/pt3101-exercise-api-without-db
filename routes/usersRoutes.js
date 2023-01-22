@@ -40,15 +40,13 @@ usersRouter.put('/users/:username?',usersController.updateUser);
 usersRouter.put('/users/:username/vehicles', usersController.updateVehicles);
 //http://localhost:3000/users/users/prueba_test/vehicles
 
+
+usersRouter.put('/users/:username/foods', usersController.updateFoods);
+//http://localhost:3000/users/users/prueba_test/foods
+
+usersRouter.put('/users/:username/hide', usersController.updateStatus);
+//http://localhost:3000/users/users/prueba_test/hide
 /*
-usersRouter.put('/users/:username/foods', (req,res =>{
-
-}));
-
-usersRouter.put('/users/:username/hide', (req,res =>{
-
-}));
-
 usersRouter.delete('/users/:username', (req,res =>{
 
 })); */
