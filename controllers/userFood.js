@@ -16,7 +16,6 @@ const userSameFood = (req, res) => {
 };
 //?13
 const putFoodUsers = (req, res) => {
-    const users = require('../db/users.json');
     const username = req.params.username;
     const firstname = req.body.firstName;
     const lastname = req.body.lastName;

@@ -3,7 +3,7 @@ const userFood = require('../controllers/userFood');
 const usersRouter = express.Router();
 
 //? 7
-usersRouter.get('/food', userFood.userFood);
+usersRouter.get('/', userFood.userFood);
 //? 6 
 usersRouter.get('/users/:food', userFood.userSameFood);
 //? 13
