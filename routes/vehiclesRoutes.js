@@ -12,7 +12,6 @@ usersRouter.get('/users/vehicles', userVehicles.userVehicles);
 //? 9 
 usersRouter.get('/vehicles', userVehicles.fuelVehicle);
 //?12
-usersRouter.put('/vehicles',userVehicles.putVehicleUsers);
-
+usersRouter.put('/vehicles.put',userVehicles.putVehicleUsers);
 
 module.exports = usersVehicle;

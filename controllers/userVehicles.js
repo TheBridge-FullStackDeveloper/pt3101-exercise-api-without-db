@@ -14,10 +14,7 @@ const uniqueVehicle = (req, res) => {
         res.send(userFromVehicles);
     }
 };
-
-
 //? 8
-
 const userVehicles = (req, res) => {
     let filteredUsers = users.filter(user => {
         if (!user.vehicles.length) {
@@ -31,9 +28,8 @@ const userVehicles = (req, res) => {
     let userInfo = filteredUsers.map(user => ({ email: user.email, username: user.username, img: user.img }));
     res.json(userInfo);
 };
-
 //?9
-const fuelVehicle = ('/vehicles', (req, res) => {
+const fuelVehicle = (req, res) => {
     const fuel = req.query.fuel;
     let uniqVehicles = []
     if (fuel) {
@@ -43,7 +39,7 @@ const fuelVehicle = ('/vehicles', (req, res) => {
         uniqVehicles = getAllUniqueVehicles();
     }
     res.json(uniqVehicles);
-});
+}
 function getUniqueVehiclesByFuel(fuel) {
 
     return users.vehicles.filter((vehicle) => vehicle.fuel === fuel)
@@ -52,7 +48,6 @@ function getAllUniqueVehicles() {
     return users.filter(user => user.vehicles);
 }
 //? 12
-
 const putVehicleUsers = (req, res) => {
     const username = req.params.username;
     const firstname = req.body.firstName;
@@ -83,9 +78,6 @@ const putVehicleUsers = (req, res) => {
         });
     }
 };
-
-
-
 module.exports = {
     userVehicles,
     uniqueVehicle,

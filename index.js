@@ -4,8 +4,6 @@ const app = express();
 const users = require('./db/users.json');
 const uuid = require('uuid');
 const bodyParser = require('body-parser');
-
-
 //Modulos de rutas
 const usersRoutes = require('./routes/usersRoutes');
 const usersFood = require('./routes/foodRoutes');
@@ -15,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 app.set('views', './views');
-
 //rutass
 app.use('/', usersRoutes);
 app.use('/food', usersFood);
@@ -244,28 +241,28 @@ app.use('/vehicle', userVehicle);
 
 
 
-app.put('/users/:username', (req, res) => {
-    const username = req.params.username;
-    const updatedUser = req.body;
+// app.put('/users/:username', (req, res) => {
+//     const username = req.params.username;
+//     const updatedUser = req.body;
 
-    // Find the index of the user with the specified username
-    const userIndex = users.findIndex(user => user.username === username);
+//     // Find the index of the user with the specified username
+//     const userIndex = users.findIndex(user => user.username === username);
 
-    if (userIndex === -1) {
-        return res.status(404).json('User not found');
-    }
+//     if (userIndex === -1) {
+//         return res.status(404).json('User not found');
+//     }
 
-    delete updatedUser.id;
-    delete updatedUser.vehicles;
-    delete updatedUser.foods;
-    delete updatedUser.deleted;
-    users[userIndex] = { ...users[userIndex], ...updatedUser };
+//     delete updatedUser.id;
+//     delete updatedUser.vehicles;
+//     delete updatedUser.foods;
+//     delete updatedUser.deleted;
+//     users[userIndex] = { ...users[userIndex], ...updatedUser };
 
 
-    fs.writeFileSync('./db/users.json', JSON.stringify(users));
+//     fs.writeFileSync('./db/users.json', JSON.stringify(users));
 
-    res.json({ message: 'Usuario actualizado correctamente' });
-});
+//     res.json({ message: 'Usuario actualizado correctamente' });
+// });
 
 //? 12 Crea el endpoint /users/:username/vehicles (PUT) para obtener una lista de vehículos en req.body
 //? (puede ser uno o muchos. Si no es ninguno, que no haga nada) y añádelos a los existentes del usuario específico (usuario a través de params)
@@ -368,7 +365,7 @@ app.put('/users/:username', (req, res) => {
 //     });
 // });
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Buenas noches.')
 })
 
 app.listen(PORT, () => {

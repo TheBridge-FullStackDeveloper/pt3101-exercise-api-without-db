@@ -6,15 +6,12 @@ const userFood = (req, res) => {
     });
     res.json([...uniqueFoods]);
 };
-
 //? 6
-
 const userSameFood = (req, res) => {
     const food = req.params.food;
     const usersWithFood = users.filter(user => user.favouritesFood.includes(food));
     res.json(usersWithFood);
 };
-
 //?13
 const putFoodUsers = (req, res) => {
     const username = req.params.username;

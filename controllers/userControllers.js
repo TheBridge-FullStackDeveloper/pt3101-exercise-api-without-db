@@ -1,5 +1,6 @@
 //? 1
 const allUsers = (req, res) => {
+    const users = require('../db/users.json');
     // console.log(users[0]);
     res.status(200).json(users);
     if (!users) {
@@ -8,6 +9,7 @@ const allUsers = (req, res) => {
 };
 //?3
 const uniqueUser = (req, res) => {
+    
     const total = users.length;
     res.json({ total });
 }
@@ -51,11 +53,7 @@ const uniqueCountryUsers = (req, res) => {
         res.send(userCountry);
     }
 };
-
-
-
 //? 2
-
 const onlyUser = (req, res) => {
     const username = req.params.username;
     let user = null;
