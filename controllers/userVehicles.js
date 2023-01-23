@@ -1,5 +1,6 @@
 //? 5
 const uniqueVehicle = (req, res) => {
+    const users = require('../db/users.json');
     const min = req.query.min;
     const max = req.query.max;
     let userFromVehicles = []
@@ -16,6 +17,7 @@ const uniqueVehicle = (req, res) => {
 };
 //? 8
 const userVehicles = (req, res) => {
+    const users = require('../db/users.json');
     let filteredUsers = users.filter(user => {
         if (!user.vehicles.length) {
             return true;
@@ -30,6 +32,7 @@ const userVehicles = (req, res) => {
 };
 //?9
 const fuelVehicle = (req, res) => {
+    const users = require('../db/users.json');
     const fuel = req.query.fuel;
     let uniqVehicles = []
     if (fuel) {

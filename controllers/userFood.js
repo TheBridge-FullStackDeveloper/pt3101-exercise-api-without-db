@@ -1,5 +1,6 @@
 //? 7
 const userFood = (req, res) => {
+    const users = require('../db/users.json');
     let uniqueFoods = new Set();
     users.forEach(user => {
         user.favouritesFood.forEach(food => uniqueFoods.add(food));
@@ -8,12 +9,14 @@ const userFood = (req, res) => {
 };
 //? 6
 const userSameFood = (req, res) => {
+    const users = require('../db/users.json');
     const food = req.params.food;
     const usersWithFood = users.filter(user => user.favouritesFood.includes(food));
     res.json(usersWithFood);
 };
 //?13
 const putFoodUsers = (req, res) => {
+    const users = require('../db/users.json');
     const username = req.params.username;
     const firstname = req.body.firstName;
     const lastname = req.body.lastName;

@@ -9,13 +9,14 @@ const allUsers = (req, res) => {
 };
 //?3
 const uniqueUser = (req, res) => {
-    
+    const users = require('../db/users.json');
     const total = users.length;
     res.json({ total });
 }
 
 //? 10
 const createUser = (req, res) => {
+    const users = require('../db/users.json');
     const email = req.body.email;
     const firstname = req.body.firstName;
     const lastname = req.body.lastName;
@@ -55,6 +56,7 @@ const uniqueCountryUsers = (req, res) => {
 };
 //? 2
 const onlyUser = (req, res) => {
+    const users = require('../db/users.json');
     const username = req.params.username;
     let user = null;
     // buscar en un array de usuarios
@@ -73,6 +75,7 @@ const onlyUser = (req, res) => {
 
 //?11
 const reqParmUser = (req, res) => {
+    const users = require('../db/users.json');
     const username = req.params.username;
     const updatedUser = req.body;
 
@@ -98,6 +101,7 @@ const reqParmUser = (req, res) => {
 //? 14
 
 const putHideUsers = (req, res) => {
+    
     const username = req.params.username;
     const email = req.body.email;
 
